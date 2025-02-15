@@ -1,183 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loucid Search</title>
-
-  <style>
-    /* General styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #000;
-      color: #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-      text-align: center;
-      position: relative;
-    }
-
-    /* Background: Dark space effect */
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-      opacity: 0.2;
-    }
-
-    .stars2 {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
-      opacity: 0.1;
-    }
-
-    /* Content Wrapper */
-    .container {
-      background: rgba(15, 15, 15, 0.9);
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-      width: 80%;
-      max-width: 700px;
-    }
-
-    /* Title */
-    h1 {
-      font-size: 3rem;
-      text-transform: uppercase;
-      color: #ddd;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: #888;
-      margin-top: 10px;
-    }
-
-    /* Search Bar */
-    .search-container {
-      margin-top: 30px;
-    }
-
-    input {
-      width: 80%;
-      max-width: 500px;
-      padding: 12px 15px;
-      font-size: 1rem;
-      color: #fff;
-      background: #222;
-      border: 1px solid #444;
-      border-radius: 50px;
-      outline: none;
-      text-align: center;
-      transition: 0.3s ease-in-out;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    }
-
-    input:focus {
-      border-color: #888;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 12px 25px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
-      background: #1e1e1e;
-      border: 1px solid #444;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: 0.3s ease-in-out;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    }
-
-    button:hover {
-      background: #333;
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    }
-
-    button:active {
-      transform: scale(0.9);
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 30px;
-      font-size: 0.8rem;
-      color: #666;
-    }
-  </style>
+  <title>Loucid - Ocean Proxy</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-  <!-- Background Stars -->
-  <div class="stars"></div>
-  <div class="stars2"></div>
-
-  <!-- Main Content -->
   <div class="container">
-    <h1>Loucid Search</h1>
-    <p>Search the universe with Rammerhead.</p>
-
-    <!-- Search Bar -->
-    <div class="search-container">
-      <input type="text" id="searchQuery" placeholder="Enter your search..." autofocus>
-      <br>
-      <button id="searchBtn">Search</button>
+    <header>
+      <h1 class="brand-name">Loucid</h1>
+      <p class="tagline">Explore the Web, Unblocked</p>
+    </header>
+    <section class="search-box">
+      <form action="/search" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search the web...">
+        <button type="submit" class="search-btn">Go</button>
+      </form>
+    </section>
+    <div class="waves">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-      <p>Made with 🖤 by Loucid | 2025</p>
-    </footer>
   </div>
-
-  <script>
-    function search() {
-      let query = document.getElementById("searchQuery").value.trim();
-      if (query !== "") {
-        window.location.href = `https://rammerhead.app/search?q=${encodeURIComponent(query)}`;
-      }
-    }
-
-    // Attach event listener to button click
-    document.getElementById("searchBtn").addEventListener("click", search);
-
-    // Allow pressing "Enter" to search
-    document.getElementById("searchQuery").addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        search();
-      }
-    });
-
-    // Fix issue where clicking out disables typing
-    document.getElementById("searchQuery").addEventListener("blur", function () {
-      this.focus();
-    });
-  </script>
-
 </body>
-
 </html>
