@@ -145,7 +145,7 @@
     <div class="search-container">
       <input type="text" id="searchQuery" placeholder="Enter your search..." autofocus>
       <br>
-      <button onclick="search()">Search</button>
+      <button id="searchBtn">Search</button>
     </div>
 
     <!-- Footer -->
@@ -161,6 +161,9 @@
         window.location.href = `https://rammerhead.app/search?q=${encodeURIComponent(query)}`;
       }
     }
+
+    // Attach event listener to button click
+    document.getElementById("searchBtn").addEventListener("click", search);
 
     // Allow pressing "Enter" to search
     document.getElementById("searchQuery").addEventListener("keydown", function (event) {
