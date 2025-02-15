@@ -6,62 +6,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loucid Games</title>
 
-  <!-- Internal CSS for dark space theme -->
   <style>
-    /* General body and layout styles */
+    /* General styles */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background: #0A0A1D; /* Dark space background */
+      background: #02030A;
       color: #fff;
-      line-height: 1.6;
       overflow-x: hidden;
       position: relative;
     }
 
+    /* Animated background stars */
+    .stars, .stars2, .stars3 {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      animation: moveStars 60s linear infinite;
+      z-index: -2;
+      opacity: 0.3;
+    }
+    
+    .stars2 {
+      background: url('https://www.transparenttextures.com/patterns/noise-pattern.png');
+      animation-duration: 100s;
+      opacity: 0.2;
+    }
+
+    .stars3 {
+      background: url('https://www.transparenttextures.com/patterns/black-paper.png');
+      animation-duration: 150s;
+      opacity: 0.1;
+    }
+
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100%); }
+    }
+
     /* Header styles */
     header {
-      background: linear-gradient(135deg, #1B2A49, #2C3E50);
-      color: #fff;
       text-align: center;
       padding: 80px 20px;
+      background: linear-gradient(135deg, #1A1F38, #2E4A68);
       box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-      position: relative;
     }
 
     header h1 {
-      margin: 0;
       font-size: 4rem;
       letter-spacing: 2px;
       font-weight: 700;
       text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+      text-shadow: 0 0 15px #4b8aff, 0 0 30px #3498db;
+      animation: floatText 3s infinite ease-in-out alternate;
     }
 
     header p {
       font-size: 1.5rem;
-      font-weight: 400;
-      margin-top: 15px;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
     }
 
-    /* Background stars (space effect) */
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/black-jeans.png'), url('https://cdn.pixabay.com/photo/2016/11/29/09/12/astronomy-1866292_960_720.jpg');
-      background-size: cover;
-      opacity: 0.5;
-      pointer-events: none;
-      z-index: -1;
+    @keyframes floatText {
+      from { transform: translateY(0); }
+      to { transform: translateY(10px); }
     }
 
-    /* Categories section */
+    /* Category buttons */
     .categories {
       display: flex;
       justify-content: center;
@@ -79,53 +93,46 @@
       cursor: pointer;
       font-size: 1.1rem;
       font-weight: 600;
-      transition: transform 0.3s ease, background 0.3s ease;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: 0.3s ease-in-out;
+      box-shadow: 0 0 15px rgba(75, 138, 255, 0.6);
     }
 
     .categories button:hover {
       background: #3498db;
-      transform: translateY(-5px);
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(75, 138, 255, 0.9);
     }
 
     .categories button:active {
-      transform: translateY(2px);
+      transform: scale(0.9);
     }
 
-    /* Main content area (centered) */
+    /* Main content */
     .main-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 20px;
       text-align: center;
+      padding: 100px 20px;
       margin-top: 50px;
     }
 
     .main-content h2 {
       font-size: 2.5rem;
       color: #4b8aff;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      text-shadow: 0 0 20px rgba(75, 138, 255, 0.8);
     }
 
     .main-content p {
       font-size: 1.2rem;
       color: #ccc;
       max-width: 600px;
-      margin-top: 20px;
-      line-height: 1.8;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      margin: auto;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
 
-    /* Footer styles */
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
       background-color: #2C3E50;
-      color: white;
       position: fixed;
       bottom: 0;
       width: 100%;
@@ -133,35 +140,10 @@
       letter-spacing: 0.5px;
     }
 
-    /* Space theme: Starry background and modern layout */
-    @keyframes stars {
-      0% {
-        transform: translateY(0);
-      }
-
-      100% {
-        transform: translateY(-100%);
-      }
-    }
-
-    .stars {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://media.giphy.com/media/xUOxf4uW5kVnmXrwOg/giphy.gif');
-      background-size: 100%;
-      animation: stars 30s linear infinite;
-      z-index: -2;
-      opacity: 0.4;
-    }
-
-    /* Responsiveness for smaller screens */
+    /* Mobile styles */
     @media (max-width: 768px) {
       .categories button {
         width: 90%;
-        margin: 10px 0;
       }
 
       .main-content h2 {
@@ -170,7 +152,6 @@
 
       .main-content p {
         font-size: 1rem;
-        padding: 0 20px;
       }
     }
   </style>
@@ -178,22 +159,24 @@
 
 <body>
 
-  <!-- Background Starry Effect -->
+  <!-- Moving star layers -->
   <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
 
-  <!-- Header Section -->
+  <!-- Header -->
   <header>
     <h1>Loucid Games</h1>
     <p>Explore the universe of gaming!</p>
   </header>
 
-  <!-- Main Content Section -->
+  <!-- Main Content -->
   <section class="main-content">
     <h2>Welcome to the Galaxy of Fun</h2>
     <p>Join Loucid Games to experience the most immersive online games, explore new worlds, and have endless fun with friends. Dive into your favorite games and start your adventure now!</p>
   </section>
 
-  <!-- Categories Section (Buttons for each category) -->
+  <!-- Game Categories -->
   <section class="categories">
     <button onclick="location.href='games.html?category=FPS'">FPS</button>
     <button onclick="location.href='games.html?category=Arcade'">Arcade</button>
@@ -201,12 +184,11 @@
     <button onclick="location.href='games.html?category=Multiplayer'">Multiplayer</button>
   </section>
 
-  <!-- Footer Section -->
+  <!-- Footer -->
   <footer>
     <p>Made with ❤️ by Loucid | 2025</p>
   </footer>
 
-  <!-- Optional JavaScript -->
   <script>
     console.log("Welcome to Loucid Games!");
   </script>
