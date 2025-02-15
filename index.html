@@ -157,16 +157,21 @@
   <script>
     function search() {
       let query = document.getElementById("searchQuery").value.trim();
-      if (query) {
-        window.location.href = `https://rammerhead.com/search?q=${encodeURIComponent(query)}`;
+      if (query !== "") {
+        window.location.href = `https://rammerhead.app/search?q=${encodeURIComponent(query)}`;
       }
     }
 
     // Allow pressing "Enter" to search
-    document.getElementById("searchQuery").addEventListener("keypress", function (event) {
+    document.getElementById("searchQuery").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         search();
       }
+    });
+
+    // Fix issue where clicking out disables typing
+    document.getElementById("searchQuery").addEventListener("blur", function () {
+      this.focus();
     });
   </script>
 
