@@ -8,186 +8,135 @@
 
   <style>
     /* General styles */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background: #02030A;
-      color: #fff;
-      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      color: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
       position: relative;
     }
 
-    /* Animated background stars */
-    .stars, .stars2, .stars3 {
+    /* Background: Dark space effect */
+    .stars {
       position: fixed;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
-      background: url('https://www.transparenttextures.com/patterns/stardust.png');
-      animation: moveStars 60s linear infinite;
-      z-index: -2;
-      opacity: 0.3;
-    }
-    
-    .stars2 {
-      background: url('https://www.transparenttextures.com/patterns/noise-pattern.png');
-      animation-duration: 100s;
+      background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
       opacity: 0.2;
     }
 
-    .stars3 {
-      background: url('https://www.transparenttextures.com/patterns/black-paper.png');
-      animation-duration: 150s;
+    .stars2 {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
       opacity: 0.1;
     }
 
-    @keyframes moveStars {
-      from { transform: translateY(0); }
-      to { transform: translateY(-100%); }
+    /* Content Wrapper */
+    .container {
+      background: rgba(15, 15, 15, 0.9);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      width: 80%;
+      max-width: 700px;
     }
 
-    /* Header styles */
-    header {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, #1A1F38, #2E4A68);
-      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    header h1 {
-      font-size: 4rem;
-      letter-spacing: 2px;
-      font-weight: 700;
+    /* Title */
+    h1 {
+      font-size: 3rem;
       text-transform: uppercase;
-      text-shadow: 0 0 15px #4b8aff, 0 0 30px #3498db;
-      animation: floatText 3s infinite ease-in-out alternate;
-    }
-
-    header p {
-      font-size: 1.5rem;
+      color: #ddd;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
     }
 
-    @keyframes floatText {
-      from { transform: translateY(0); }
-      to { transform: translateY(10px); }
+    p {
+      font-size: 1.2rem;
+      color: #888;
+      margin-top: 10px;
     }
 
-    /* Category buttons */
+    /* Buttons */
     .categories {
+      margin-top: 30px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 40px;
+      gap: 15px;
     }
 
     .categories button {
-      background: #4b8aff;
-      color: white;
-      padding: 15px 40px;
-      margin: 15px;
-      border: none;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 12px 25px;
+      border: 1px solid #444;
       border-radius: 50px;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       transition: 0.3s ease-in-out;
-      box-shadow: 0 0 15px rgba(75, 138, 255, 0.6);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     }
 
     .categories button:hover {
-      background: #3498db;
+      background: #333;
       transform: scale(1.1);
-      box-shadow: 0 0 30px rgba(75, 138, 255, 0.9);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
 
     .categories button:active {
       transform: scale(0.9);
     }
 
-    /* Main content */
-    .main-content {
-      text-align: center;
-      padding: 100px 20px;
-      margin-top: 50px;
-    }
-
-    .main-content h2 {
-      font-size: 2.5rem;
-      color: #4b8aff;
-      text-shadow: 0 0 20px rgba(75, 138, 255, 0.8);
-    }
-
-    .main-content p {
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 600px;
-      margin: auto;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-
     /* Footer */
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #2C3E50;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-    }
-
-    /* Mobile styles */
-    @media (max-width: 768px) {
-      .categories button {
-        width: 90%;
-      }
-
-      .main-content h2 {
-        font-size: 2rem;
-      }
-
-      .main-content p {
-        font-size: 1rem;
-      }
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: #666;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Moving star layers -->
+  <!-- Background Stars -->
   <div class="stars"></div>
   <div class="stars2"></div>
-  <div class="stars3"></div>
-
-  <!-- Header -->
-  <header>
-    <h1>Loucid Games</h1>
-    <p>Explore the universe of gaming!</p>
-  </header>
 
   <!-- Main Content -->
-  <section class="main-content">
-    <h2>Welcome to the Galaxy of Fun</h2>
-    <p>Join Loucid Games to experience the most immersive online games, explore new worlds, and have endless fun with friends. Dive into your favorite games and start your adventure now!</p>
-  </section>
+  <div class="container">
+    <h1>Loucid Games</h1>
+    <p>Explore the darkness of space, and dive into the best games in the galaxy.</p>
 
-  <!-- Game Categories -->
-  <section class="categories">
-    <button onclick="location.href='games.html?category=FPS'">FPS</button>
-    <button onclick="location.href='games.html?category=Arcade'">Arcade</button>
-    <button onclick="location.href='games.html?category=Puzzle'">Puzzle</button>
-    <button onclick="location.href='games.html?category=Multiplayer'">Multiplayer</button>
-  </section>
+    <!-- Game Categories -->
+    <div class="categories">
+      <button onclick="location.href='games.html?category=FPS'">FPS</button>
+      <button onclick="location.href='games.html?category=Arcade'">Arcade</button>
+      <button onclick="location.href='games.html?category=Puzzle'">Puzzle</button>
+      <button onclick="location.href='games.html?category=Multiplayer'">Multiplayer</button>
+    </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>Made with ❤️ by Loucid | 2025</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+      <p>Made with 🖤 by Loucid | 2025</p>
+    </footer>
+  </div>
 
   <script>
     console.log("Welcome to Loucid Games!");
