@@ -14,8 +14,10 @@
     </header>
     <section class="search-box">
       <form action="/search" method="GET">
-        <input type="text" name="query" class="search-input" placeholder="Search the web...">
-        <button type="submit" class="search-btn">Go</button>
+        <div class="search-wrapper">
+          <input type="text" name="query" class="search-input" placeholder="Search the web...">
+          <button type="submit" class="search-btn">Go</button>
+        </div>
       </form>
     </section>
     <div class="waves">
@@ -23,6 +25,12 @@
       <div class="wave"></div>
       <div class="wave"></div>
     </div>
+    <div class="bubble-container">
+      <div class="bubble bubble1"></div>
+      <div class="bubble bubble2"></div>
+      <div class="bubble bubble3"></div>
+    </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
